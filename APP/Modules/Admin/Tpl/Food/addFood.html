@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>宏玄餐厅后台管理-后台管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/pintuer.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/admin.css">
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <script src="__PUBLIC__/js/pintuer.js"></script>
+    <script src="__PUBLIC__/js/respond.js"></script>
+    <script src="__PUBLIC__/js/admin.js"></script>
+    </script>
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+    <link href="/favicon.ico" rel="bookmark icon" />
+</head>
+
+<body>
+    <div class="lefter">
+        <div class="logo">
+            <a href="{:U('Admin/Index/index')}"><img src="__PUBLIC__/images/logo.png" alt="后台管理系统" width="96px;" /></a>
+        </div>
+    </div>
+    <div class="righter nav-navicon" id="admin-nav">
+        <div class="mainer">
+            <div class="admin-navbar">
+                <span class="float-right">
+                    <a class="button button-little bg-main" href="{:U('Index/Index/index')}" target="_blank">前台首页</a>
+                    <a class="button button-little bg-yellow" href="{:U('Admin/Index/logout')}">注销登录</a>
+                </span>
+                <ul class="nav nav-inline admin-nav">
+                    <li><a href="{:U('Admin/Index/index')}" class="icon-home"> 首页</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/Index/index')}">首页</a></li>
+                            <!--<li><a href="system.html">系统设置</a></li>-->
+                            <li><a href="{:U('Admin/Food/index')}">菜品管理</a></li>
+                            <li><a href="{:U('Admin/Order/index')}">订单管理</a></li>
+                            <li><a href="{:U('Admin/User/index')}">会员管理</a></li>
+                            <li><a href="#">优惠策略</a></li>
+                            <li><a href="#">报表管理</a></li>
+                        </ul>
+                    </li>
+                    <!--<li><a href="system.html" class="icon-cog"> 系统</a>
+                        <ul>
+                            <li><a href="#">全局设置</a></li>
+                            <li class="active"><a href="#">系统设置</a></li>
+                            <li><a href="#">会员设置</a></li>
+                            <li><a href="#">积分设置</a></li>
+                        </ul>
+                    </li>-->
+                    <li class="active"><a href="{:U('Admin/Food/index')}" class="icon-th"> 菜品管理</a>
+                        <ul>
+                            <li><a href="{:U('Admin/Food/index')}">所有菜品</a></li>
+                            <li class="active"><a href="{:U('Admin/Food/addFood')}">添加菜品</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{:U('Admin/Order/index')}" class="icon-shopping-cart"> 订单管理</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/Order/index')}">所有订单</a></li>
+                            <li><a href="{:U('Admin/Order/untreatedList')}">未处理订单</a></li>
+                            <li><a href="{:U('Admin/Order/unpaidList')}">未结算订单</a></li>
+                            <li><a href="{:U('Admin/Order/successfulList')}">已完成订单</a></li>
+                            <li><a href="{:U('Admin/Order/abolishedList')}">已取消订单</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{:U('Admin/User/index')}" class="icon-user"> 会员管理</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/User/index')}">所有会员</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="icon-gift"> 优惠策略</a></li>
+                    <li><a href="#" class="icon-list-alt"> 报表管理</a></li>
+                </ul>
+            </div>
+            <div class="admin-bread">
+                <span>您好，{$_SESSION['username']}，欢迎您的光临。</span>
+                <ul class="bread">
+                    <li><a href="{:U('Admin/Index/index')}" class="icon-home"> 首页</a></li>
+                    <li><a href="{:U('Admin/Food/index')}" class="icon-th"> 菜品管理</a></li>
+                    <li>添加菜品</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin">
+        <form method="post" class="form-x" action="{:U('Admin/Food/addFoodHandle')}" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="label">
+                    <label for="siteurl">菜品类型</label>
+                </div>
+                <div class="field">
+                    <select class="input" name="type" style="width:auto;">
+                        <option value="">请选择菜品类型</option>
+                        <option value="主餐">主餐</option>
+                        <option value="饮料">饮料</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="sitename">菜品名称</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" id="sitename" name="foodname" size="50" placeholder="菜品名称" data-validate="required:请填写菜品的名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="keywords">价格（元）</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" name="price" size="50" placeholder="菜品价格" data-validate="required:请填写菜品价格" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="title">折扣（折）</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" name="discount" size="5" placeholder="折扣（可不填）"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="logo">菜品图片</label>
+                </div>
+                <div class="field" style="width:auto;">
+                    <a class="button input-file">+ 浏览文件<input size="100" id="picfile" type="file" onchange="change(event);" name="imageurl"  data-validate="required:请选择上传文件,regexp#.+.(jpg|jpeg|png|gif)$:只能上传jpg|jpeg|png|gif格式文件" /></a><span id="filename" style="float: right; font-size: 14px;padding: 6px 15px;margin: 0;display: inline-block;line-height: 20px;" ></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="desc">描述</label>
+                </div>
+                <div class="field">
+                    <textarea name="extra" class="input" rows="5" cols="50" placeholder="菜品说明（可不填）"></textarea>
+                </div>
+            </div>
+            <div class="form-button">
+                <button class="button bg-main" type="submit">保存添加</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+    //获取图片名称
+    function change(e){
+        var picname = document.getElementById('picfile');
+        var filename = document.getElementById('filename');
+        filename.innerHTML = picname.value;
+    }
+    //$('#picfile').change(function(){
+    //    var str;
+    //    str = $(this).val();
+    //    var arr = str.split('\\');
+    //    var my = arr[arr.length - 1];
+    //    alert(my);
+    //    var filename = document.getElementById('filename');
+    //    filename.value = my;    
+    //});
+    </script>
+</body>
+
+</html>

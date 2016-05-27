@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>宏玄餐厅后台管理-后台管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/pintuer.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/admin.css">
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <script src="__PUBLIC__/js/pintuer.js"></script>
+    <script src="__PUBLIC__/js/respond.js"></script>
+    <script src="__PUBLIC__/js/admin.js"></script>
+    </script>
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+    <link href="/favicon.ico" rel="bookmark icon" />
+</head>
+
+<body>
+    <div class="lefter">
+        <div class="logo">
+            <a href="{:U('Admin/Index/index')}"><img src="__PUBLIC__/images/logo.png" alt="后台管理系统" width="96px;" /></a>
+        </div>
+    </div>
+    <div class="righter nav-navicon" id="admin-nav">
+        <div class="mainer">
+            <div class="admin-navbar">
+                <span class="float-right">
+                    <a class="button button-little bg-main" href="{:U('Index/Index/index')}" target="_blank">前台首页</a>
+                    <a class="button button-little bg-yellow" href="{:U('Admin/Index/logout')}">注销登录</a>
+                </span>
+                <ul class="nav nav-inline admin-nav">
+                    <li><a href="{:U('Admin/Index/index')}" class="icon-home"> 首页</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/Index/index')}">首页</a></li>
+                            <!--<li><a href="system.html">系统设置</a></li>-->
+                            <li><a href="{:U('Admin/Food/index')}">菜品管理</a></li>
+                            <li><a href="{:U('Admin/Order/index')}">订单管理</a></li>
+                            <li><a href="{:U('Admin/User/index')}">会员管理</a></li>
+                            <li><a href="#">优惠策略</a></li>
+                            <li><a href="#">报表管理</a></li>
+                        </ul>
+                    </li>
+                    <!--<li><a href="system.html" class="icon-cog"> 系统</a>
+                        <ul>
+                            <li><a href="#">全局设置</a></li>
+                            <li class="active"><a href="#">系统设置</a></li>
+                            <li><a href="#">会员设置</a></li>
+                            <li><a href="#">积分设置</a></li>
+                        </ul>
+                    </li>-->
+                    <li><a href="{:U('Admin/Food/index')}" class="icon-th"> 菜品管理</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/Food/index')}">所有菜品</a></li>
+                            <li><a href="{:U('Admin/Food/addFood')}">添加菜品</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{:U('Admin/Order/index')}" class="icon-shopping-cart"> 订单管理</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/Order/index')}">所有订单</a></li>
+                            <li><a href="{:U('Admin/Order/untreatedList')}">未处理订单</a></li>
+                            <li><a href="{:U('Admin/Order/unpaidList')}">未结算订单</a></li>
+                            <li><a href="{:U('Admin/Order/successfulList')}">已完成订单</a></li>
+                            <li><a href="{:U('Admin/Order/abolishedList')}">已取消订单</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="{:U('Admin/User/index')}" class="icon-user"> 会员管理</a>
+                        <ul>
+                            <li class="active"><a href="{:U('Admin/User/index')}">所有会员</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="icon-gift"> 优惠策略</a></li>
+                    <li><a href="#" class="icon-list-alt"> 报表管理</a></li>
+                </ul>
+            </div>
+            <div class="admin-bread">
+                <span>您好，{$_SESSION['username']}，欢迎您的光临。</span>
+                <ul class="bread">
+                    <li><a href="{:U('Admin/Index/index')}" class="icon-home"> 开始</a></li>
+                    <li><a href="{:U('Admin/User/index')}" class="icon-user"> 会员管理</a></li>
+                    <li>所有会员</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div class="admin">
+    <form method="post" action="{:U('Admin/User/deleteMulUsers')}">
+        <div class="panel admin-panel">
+            <div class="panel-head"><strong>所有会员列表</strong></div>
+            <div class="padding border-bottom">
+                <input type="button" class="button button-small checkall" name="checkall" checkfor="id[]" value="全选" />
+                <a href="">
+                    <input type="submit" class="button button-small border-yellow" value="批量删除" onclick="{if(confirm('确认删除?')){return true;}return false;}" />
+                </a>
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th width="45">选择</th>
+                    <th width="80">用户编号</th>
+                    <th width="80">用户名称</th>
+                    <th width="80">锁定状态</th>
+                    <th width="120">电子邮件</th>
+                    <th width="110">联系电话</th>
+                    <th width="110">上次登录时间</th>
+                    <th width="100">创建时间</th>
+                    <th width="*">送餐地址</th>
+                    <th width="80">操作</th>
+                </tr>
+                <foreach name="list" item="v">
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="id[]" value="{$v['id']}" />
+                        </td>
+                        <td>{$v.id}</td>
+                        <td>{$v.username}</td>
+                        <td>
+                            <if condition="$v['locked'] eq 0">
+                                <a href="{:U('Admin/User/changeLocked',array('bid' => $v['id'], 'locked' => 1))}"><input type="button" class="button button-small border-green" value="未锁定" onclick="{if(confirm('确认改为锁定状态?')){return true;}return false;}" /></a>
+                                <else /><a href="{:U('Admin/User/changeLocked',array('bid' => $v['id'], 'locked' => 0))}"><input type="button" class="button button-small border-blue" value="锁定" onclick="{if(confirm('确认取消锁定状态?')){return true;}return false;}" /></a></if>
+                        </td>
+                        <td>{$v.email}</td>
+                        <td>{$v.phone}</td>
+                        <td>{$v.logintime|date='Y-m-d H:i:s',###}</td>
+                        <td>{$v.createDate|date='Y-m-d H:i:s',###}</td>
+                        <td>{$v.address}</td>
+                        <td>
+                            <a href="{:U('Admin/User/deleteUser',array('bid' => $v['id']))}" onclick="{if(confirm('确认删除?')){return true;}return false;}"><input type="button" class="button button-small border-red" value="删除用户" /></a>
+                        </td>
+                    </tr>
+                </foreach>
+            </table>
+            <div class="panel-foot text-center">
+                {$page}
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

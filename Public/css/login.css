@@ -1,0 +1,132 @@
+.ibox-content {
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #676A6C;
+    background-color: #FFFFFF;
+    margin: 50px auto;
+    padding: 20px;
+    border-color: #E7EAEC;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px;
+    width: 90%;
+    clear: both;
+}
+
+.ibox-content h1,
+.ibox-content h2,
+.ibox-content h3,
+.ibox-content h4,
+.ibox-content h5,
+.ibox-title h1,
+.ibox-title h2,
+.ibox-title h3,
+.ibox-title h4,
+.ibox-title h5 {
+    margin-top: 5px;
+}
+
+.b-r {
+    border-right: 1px solid #E7EAEC;
+}
+
+.m-b {
+    margin: 5px 0px 15px;
+}
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+}
+h3,
+h4,
+h5 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+.m-t {
+    margin-top: 15px;
+}
+
+.form-control,
+.single-line {
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #E5E6E7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size: 14px;
+}
+.passcode {
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #E5E6E7;
+    border-radius: 1px;
+    color: inherit;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    max-width: 76%;
+    width: auto;
+    font-size: 14px;
+}
+.verify {
+    display: inline;
+    float: left;
+}
+
+.form-control,
+.form-control:focus,
+.has-error .form-control:focus,
+.has-success .form-control:focus,
+.has-warning .form-control:focus,
+.navbar-collapse,
+.navbar-form,
+.navbar-form-custom .form-control:focus,
+.navbar-form-custom .form-control:hover,
+.open .btn.dropdown-toggle,
+.panel,
+.popover,
+.progress,
+.progress-bar {
+    box-shadow: none;
+}
+
+.fa {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-feature-settings: normal;
+    font-language-override: normal;
+    font-kerning: auto;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-size: inherit;
+    text-rendering: auto;
+    display: inline-block;
+    transform: translate(0px, 0px);
+}
+
+.fa-sign-in:before {
+    content: "\f090";
+}
+
+.big-icon {
+    font-size: 160px;
+    color: #E5E6E7;
+}

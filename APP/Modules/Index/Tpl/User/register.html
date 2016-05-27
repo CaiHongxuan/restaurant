@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>宏玄餐饮B2C店</title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Spicemystery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css" type="text/css" media="screen" />
+    <script src="__PUBLIC__/js/simpleCart.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="head-top">
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="__PUBLIC__/images/logo.png" class="img-responsive" alt="" width="236px;" /></a>
+            </div>
+            <div class="header-left">
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li><a href="{:U('Index/Index/index')}">主页</a></li>
+                        <li><a href="{:U('Index/Menu/index')}">所有菜品</a></li>
+                        <li><a href="{:U('Index/Menu/category')}">分类菜品</a></li>
+                        <li><a href="{:U('Index/Index/aboutus')}">关于我们</a></li>
+                        <if condition="isset($_SESSION['user_id'])">
+                            <li><a href="{:U('Index/User/index')}">欢迎 {$_SESSION['user_name']}</a></li>
+                            <li><a href="{:U('Index/Index/logout')}">退出</a></li>
+                            <else />
+                            <li><a href="{:U('Index/Login/index')}">登录/注册</a></li>
+                        </if>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- script-for-nav -->
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".head-nav ul").slideToggle(300, function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                    <!-- script-for-nav -->
+                </div>
+                <div class="header-right1">
+                    <div class="cart box_1">
+                        <a href="{:U('Index/User/myshoppingcar')}">
+                            <h3> <span class="simpleCart_total"> &yen;0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 项)<img src="__PUBLIC__/images/bag.png" alt=""></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- header -->
+    <div class="ibox-content">
+        <h2>
+    注册新用户
+    </h2>
+        <form id="form" action="{:U('Index/User/registerHandle')}" method="post" class="wizard-big">
+            <h1>账户</h1>
+            <fieldset>
+                <h2>账户信息</h2>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label>邮箱（需验证） *</label>
+                            <input id="email" name="email" type="text" class="form-control required email">
+                        </div>
+                        <div class="form-group">
+                            <label>密码 *</label>
+                            <input id="password" name="password" type="password" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label>确认密码 *</label>
+                            <input id="confirm" name="confirm" type="password" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div style="margin-top: 20px">
+                                <i class="fa fa-sign-in" style="font-size: 180px;color: #e5e5e5 "></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <h1>个人资料</h1>
+            <fieldset>
+                <h2>个人资料信息</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>姓名 *</label>
+                            <input id="name" name="name" type="text" class="form-control required">
+                        </div>
+                        <div class="form-group">
+                            <label>手机 *</label>
+                            <input id="phone" name="phone" type="text" class="form-control required phone">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>送货地址 *</label>
+                            <input id="address" name="address" type="text" class="form-control required">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <h1>通知</h1>
+            <fieldset>
+                <h2>条款</h2>
+                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
+                <label for="acceptTerms">我同意注册条款</label>
+            </fieldset>
+            <h1>完成</h1>
+            <fieldset>
+                <div class="text-center" style="margin-top: 120px">
+                    <h2>邮件准备发送，请到登录邮箱进行激活！</h2>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <link href="__PUBLIC__/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="__PUBLIC__/css/login.css?v=2.2.0" rel="stylesheet">
+    <link href="__PUBLIC__/css/jquery.steps.css" rel="stylesheet">
+    <!-- Steps -->
+    <script src="__PUBLIC__/js/jquery.steps.min.js"></script>
+    <!-- Jquery Validate -->
+    <script src="__PUBLIC__/js/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/js/messages_zh.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#wizard").steps();
+        $("#form").steps({
+            bodyTag: "fieldset",
+            onStepChanging: function(event, currentIndex, newIndex) {
+                // Always allow going backward even if the current step contains invalid fields!
+                if (currentIndex > newIndex) {
+                    return true;
+                }
+
+                // Forbid suppressing "Warning" step if the user is to young
+                if (newIndex === 3 && Number($("#age").val()) < 18) {
+                    return false;
+                }
+
+                var form = $(this);
+
+                // Clean up if user went backward before
+                if (currentIndex < newIndex) {
+                    // To remove error styles
+                    $(".body:eq(" + newIndex + ") label.error", form).remove();
+                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                }
+
+                // Disable validation on fields that are disabled or hidden.
+                form.validate().settings.ignore = ":disabled,:hidden";
+
+                // Start validation; Prevent going forward if false
+                return form.valid();
+            },
+            onStepChanged: function(event, currentIndex, priorIndex) {
+                // Suppress (skip) "Warning" step if the user is old enough.
+                if (currentIndex === 2 && Number($("#age").val()) >= 18) {
+                    $(this).steps("next");
+                }
+
+                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                if (currentIndex === 2 && priorIndex === 3) {
+                    $(this).steps("previous");
+                }
+            },
+            onFinishing: function(event, currentIndex) {
+                var form = $(this);
+
+                // Disable validation on fields that are disabled.
+                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                form.validate().settings.ignore = ":disabled";
+
+                // Start validation; Prevent form submission if false
+                return form.valid();
+            },
+            onFinished: function(event, currentIndex) {
+                var form = $(this);
+
+                // Submit form input
+                form.submit();
+            }
+        }).validate({
+            errorPlacement: function(error, element) {
+                element.before(error);
+            },
+            rules: {
+                confirm: {
+                    equalTo: "#password"
+                }
+            }
+        });
+    });
+    </script>
+    <!-- header begin -->
+    <include file="Common/footer" />
+    <!-- header end -->

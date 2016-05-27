@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>宏玄餐饮B2C店</title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Spicemystery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css" type="text/css" media="screen" />
+    <script src="__PUBLIC__/js/simpleCart.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="head-top">
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="__PUBLIC__/images/logo.png" class="img-responsive" alt="" width="236px;" /></a>
+            </div>
+            <div class="header-left">
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li><a href="{:U('Index/Index/index')}">主页</a></li>
+                        <li><a href="{:U('Index/Menu/index')}">所有菜品</a></li>
+                        <li><a href="{:U('Index/Menu/category')}">分类菜品</a></li>
+                        <li><a href="{:U('Index/Index/aboutus')}">关于我们</a></li>
+                        <if condition="isset($_SESSION['user_id'])">
+                            <li><a href="{:U('Index/User/index')}">欢迎 {$_SESSION['user_name']}</a></li>
+                            <li><a href="{:U('Index/Index/logout')}">退出</a></li>
+                            <else />
+                            <li><a href="{:U('Index/Login/index')}">登录/注册</a></li>
+                        </if>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- script-for-nav -->
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".head-nav ul").slideToggle(300, function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                    <!-- script-for-nav -->
+                </div>
+                <div class="header-right1">
+                    <div class="cart box_1">
+                        <a href="{:U('Index/User/myshoppingcar')}">
+                            <h3> <span class="simpleCart_total"> &yen;0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 项)<img src="__PUBLIC__/images/bag.png" alt=""></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- header -->
+
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <h3 class="m-t-none m-b">登录</h3>
+                    <p>欢迎登录本站(⊙o⊙)</p>
+                    <form action="{:U('Index/Login/login')}" method="post" class="form-horizontal m-t" id="commentForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">E-mail：</label>
+                            <div class="col-sm-8">
+                                <input id="cemail" type="email" class="form-control" name="email" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-8">
+                                <input id="password" name="password" class="form-control" type="password" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">验证码：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="passcode" name="passcode" required="" aria-required="true"/>
+                                <a href="javascript:void(change_code(this));"><img src="{:U('Index/Login/verify', '', '')}" width="80" height="34" class="verify" /></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button class="btn btn-primary" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <h4>还不是会员？</h4>
+                    <p>您可以注册一个新账户</p>
+                    <p class="text-center">
+                        <a href="{:U('Index/User/register')}"><i class="fa fa-sign-in big-icon"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+
+    <link href="__PUBLIC__/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="__PUBLIC__/css/login.css?v=2.2.0" rel="stylesheet">
+    <script type="text/javascript">
+        var verifyURL="{:U('Index/Login/verify','','')}";
+        // 验证码变换数字
+        function change_code(obj){
+            $(".verify").attr('src',verifyURL+'/'+Math.random());
+            return false;
+        }
+    </script>
+
+<!-- header begin -->
+<include file="Common/footer" />
+<!-- header end -->

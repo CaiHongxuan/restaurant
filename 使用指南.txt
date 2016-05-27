@@ -1,0 +1,6 @@
+1.下载xampp或wampp并安装；
+2.将restaurant文件夹放到根目录下（如：xampp/htdocs文件夹下）；
+3.导入数据（将restaurant.sql导入MySQL数据库）；
+4.将restaurant/APP/Conf下的config.php文件里面的用户名（默认为“root”）和密码（默认为“root”）修改为你的MySQL数据库的用户名和密码；
+5.打开xampp安装目录xampp\apache\conf文件夹下的httpd.conf文件，将AllowOverride None 的None改为 All；
+6.打开xampp，开启Apache和MySQL服务，在地址栏输入：localhost:80/restaurant/Admin即可登录网站后台（账号：admin	密码：admin）输入：localhost:80/restaurant/Index即可访问网站前台（账号：1758677739@qq.com	密码：mima，也可自行注册一个账号（需登录QQ验证））。

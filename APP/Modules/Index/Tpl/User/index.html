@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>宏玄餐饮B2C店</title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Spicemystery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css" type="text/css" media="screen" />
+    <script src="__PUBLIC__/js/simpleCart.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="head-top">
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="__PUBLIC__/images/logo.png" class="img-responsive" alt="" width="236px;" /></a>
+            </div>
+            <div class="header-left">
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li><a href="{:U('Index/Index/index')}">主页</a></li>
+                        <li><a href="{:U('Index/Menu/index')}">所有菜品</a></li>
+                        <li><a href="{:U('Index/Menu/category')}">分类菜品</a></li>
+                        <li><a href="{:U('Index/Index/aboutus')}">关于我们</a></li>
+                        <if condition="isset($_SESSION['user_id'])">
+                            <li class="active"><a href="{:U('Index/User/index')}">欢迎 {$_SESSION['user_name']}</a></li>
+                            <li><a href="{:U('Index/Index/logout')}">退出</a></li>
+                            <else />
+                            <li><a href="{:U('Index/Login/index')}">登录/注册</a></li>
+                        </if>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- script-for-nav -->
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".head-nav ul").slideToggle(300, function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                    <!-- script-for-nav -->
+                </div>
+                <div class="header-right1">
+                    <div class="cart box_1">
+                        <a href="{:U('Index/User/myshoppingcar')}">
+                            <h3> <span class="simpleCart_total"> &yen;0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 项)<img src="__PUBLIC__/images/bag.png" alt=""></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- header -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel blank-panel">
+                        <div class="panel-heading">
+                            <div class="panel-options">
+                                <ul class="nav nav-tabs">
+                                    <li><a data-toggle="tab" href="#tab-1">待收货列表</a>
+                                    </li>
+                                    <li><a data-toggle="tab" href="#tab-2">历史订单</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    <strong>未付款订单</strong>
+                            <!-- <div class="orders">
+                                <div class="container"> -->
+                                    <!-- <h1>未付款清单</h1> -->
+                                    <form action="{:U('User/pay')}" method="post">
+                                        <foreach name="foods" item="v">
+                                            <if condition="($v['pay'] eq 0) AND ($v['status'] neq 3)">
+                                                <div class="table-responsive m-t">
+                                                    <table class="table invoice-table">
+                                                        <thead border="1">
+                                                            <tr>
+                                                                <td>订单编号：{$v.id}</td>
+                                                                <td>下单时间：{$v.booktime|date='Y-m-d H:i:s',###}</td>
+                                                                <if condition="$v['status'] neq 0"><td>已发货</td><else /><td>待发货</td></if>
+                                                                <td>总计：¥{$v.total}</td>
+                                                                <td><a href="{:U('User/paySingle',array('id' => $v['id']))}" class="">付款</a></td>
+                                                            </tr>
+                                                            <tr class="headerRow">
+                                                                <th class="item-image"></th>
+                                                                <th>清单</th>
+                                                                <th class="item-id">菜品编号</th>
+                                                                <th>价格</th>
+                                                                <th>折扣（折）</th>
+                                                                <th>数量</th>
+                                                                <th>小计</th>
+                                                            </tr>
+                                                            <volist name="v['food']" id="val">
+                                                                <tr id="cartItem_9" class="itemRow row-0 odd">
+                                                                    <td class="item-image"><img style="width:155px;height:124px;" src="{$val['imageurl']}"></td>
+                                                                    <td>{$val.foodname}({$val.extra})</td>
+                                                                    <td class="item-id"><input name="ids[]" value="9" class="simpleCart_input" type="text"></td>
+                                                                    <td>¥{$val.price}</td>
+                                                                    <td><if condition="($val['discount'] gt 0) AND ($val['discount'] lt 10)">{$val.discount}<else />-</if></td>
+                                                                    <td>{$val.count}</td>
+                                                                    <td>¥{$val['price']*$val['count']*$val['discount']/10}</td>
+                                                                </tr>
+                                                            </volist>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </if>
+                                        </foreach>
+                                        <notempty name="total">
+                                            <table class="table invoice-total">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><strong>总计（打折后）：</strong>
+                                                        </td>
+                                                        <td><b style="color:red;">¥{$total}</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <center>
+                                                <input style="display: none;" name="user_id" value="1" type="text">
+                                                <input style="display: none;" name="foods" value="" type="text">
+                                                <input style="display: none;" name="quantity" value="" type="text">
+                                                <input style="width:9%;" class="morebtn hvr-rectangle-in addtocard" value="全部支付" type="submit">
+                                            </center>
+                                        <else />暂无相关数据
+                                        </notempty>
+                                    </form>
+                                <!-- </div>
+                            </div> -->
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                    <strong>历史订单</strong>
+                                    <volist name="foods" id="v">
+                                        <if condition="($v['pay'] eq 1) AND ($v['status'] neq 3)">
+                                            <div class="table-responsive m-t">
+                                                <table class="table invoice-table">
+                                                    <thead border="1">
+                                                        <tr>
+                                                            <td>订单编号：{$v.id}</td>
+                                                            <td>下单时间：{$v.booktime|date='Y-m-d H:i:s',###}</td>
+                                                            <td>总计：¥{$v.total}</td>
+                                                        </tr>
+                                                        <tr class="headerRow">
+                                                            <th class="item-image"></th>
+                                                            <th>清单</th>
+                                                            <th class="item-id">菜品编号</th>
+                                                            <th>价格</th>
+                                                            <th>折扣（折）</th>
+                                                            <th>数量</th>
+                                                            <th>小计</th>
+                                                        </tr>
+                                                        <volist name="v['food']" id="val">
+                                                            <tr id="cartItem_9" class="itemRow row-0 odd">
+                                                                <td class="item-image"><img style="width:155px;height:124px;" src="{$val['imageurl']}"></td>
+                                                                <td>{$val.foodname}({$val.extra})</td>
+                                                                <td class="item-id"><input name="ids[]" value="9" class="simpleCart_input" type="text"></td>
+                                                                <td>¥{$val.price}</td>
+                                                                <td><if condition="($val['discount'] gt 0) AND ($val['discount'] lt 10)">{$val.discount}<else />-</if></td>
+                                                                <td>{$val.count}</td>
+                                                                <td>¥{$val['price']*$val['count']*$val['discount']/10}</td>
+                                                            </tr>
+                                                        </volist>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </if>
+                                    </volist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+    <link href="__PUBLIC__/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="__PUBLIC__/css/login.css?v=2.2.0" rel="stylesheet">
+    <script type="text/javascript">
+    var verifyURL = "{:U('Index/Login/verify','','')}";
+    // 验证码变换数字
+    function change_code(obj) {
+        $(".verify").attr('src', verifyURL + '/' + Math.random());
+        return false;
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js?v=3.4.0"></script>
+    <!-- header begin -->
+    <include file="Common/footer" />
+    <!-- header end -->

@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>宏玄餐饮B2C店</title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Spicemystery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css" type="text/css" media="screen" />
+    <script src="__PUBLIC__/js/simpleCart.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="head-top">
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="__PUBLIC__/images/logo.png" class="img-responsive" alt="" width="236px;" /></a>
+            </div>
+            <div class="header-left">
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li class="active"><a href="{:U('Index/Index/index')}">主页</a></li>
+                        <li><a href="{:U('Index/Menu/index')}">所有菜品</a></li>
+                        <li><a href="{:U('Index/Menu/category')}">分类菜品</a></li>
+                        <li><a href="{:U('Index/Index/aboutus')}">关于我们</a></li>
+                        <if condition="isset($_SESSION['user_id'])">
+                            <li><a href="{:U('Index/User/index')}">欢迎 {$_SESSION['user_name']}</a></li>
+                            <li><a href="{:U('Index/Index/logout')}">退出</a></li>
+                            <else />
+                            <li><a href="{:U('Index/Login/index')}">登录/注册</a></li>
+                        </if>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- script-for-nav -->
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".head-nav ul").slideToggle(300, function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                    <!-- script-for-nav -->
+                </div>
+                <div class="header-right1">
+                    <div class="cart box_1">
+                        <a href="{:U('Index/User/myshoppingcar')}">
+                            <h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 项)<img src="__PUBLIC__/images/bag.png" alt=""></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- header -->
+    <!-- banner -->
+    <!--<div class="banner">
+        <div class="container">
+            <div class="b_room">
+                <div class="booking_room">
+                    <br />
+                    <div class="reservation">
+                        <div class="book-top">
+                            <div class="b-search">
+                                <div class="boo-lef">
+                                    <i class="sear"></i>
+                                    <p>查询</p>
+                                </div>
+                            </div>
+                            <div class="pick">
+                                <div class="boo-lef">
+                                    <i class="sele"></i>
+                                    <p>加入购物车</p>
+                                </div>
+                            </div>
+                            <div class="delv">
+                                <div class="boo-lef">
+                                    <i class="ca-r"></i>
+                                    <p>支付</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <ul>
+                            <li class="span1_of_1"> -->
+    <!-- start section_room-->
+    <!--    <form>
+                                    <input type="text" class="textbox" value="Resturant Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Resturant Name';}">
+                                </form>
+                            </li>
+                            <li class="span1_of_1"> -->
+    <!--start section_room-->
+    <!--    <div class="section_room">
+                                    <select id="country" onchange="change_country(this.value)" class="frm-field required">
+                                        <option value="null">Enter City Name</option>
+                                        <option value="null">popular areas</option>
+                                        <option value="AX">Maroubra</option>
+                                        <option value="AX">Ultimo</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="span1_of_3">
+                                <div class="date_btn">
+                                    <form action="resturants.html">
+                                        <input type="submit" value="Find resturants">
+                                    </form>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- banner -->
+    <!-- latis -->
+    <div class="latis">
+        <div class="container">
+            <foreach name="foods" item="v">
+                <div class="col-md-4 latis-left">
+                    <h3>{$v.foodname}<if condition="($v['discount'] gt 0) AND ($v['discount'] lt 10)">&nbsp;({$v.discount}折)</if></h3>
+                    <img src="{$v['imageurl']}" class="item_image img-responsive" alt="" style="height: 260px;width: 350px;">
+                    <div class="special-info grid_1 simpleCart_shelfItem">
+                        <p>{$v.extra}</p>
+                        <div class="cur">
+                            <div class="cur-left">
+                                <if condition="$v['status'] eq 0">
+                                    <span style="display: none;" class="item_name">{$v.foodname}<if condition="$v['extra'] neq ''">({$v.extra})</if></span>
+                                    <span style="display: none;" class="item_image"><img src="{$v['imageurl']}" class="item_image img-responsive" alt="" style="height:124px;width:155px;"></span>
+                                    <span style="display: none;" class="item_discount">{$v.discount}</span>
+                                    <span style="display: none;" class="item_id">{$v.id}</span>
+                                    <!-- <if condition="isset($_SESSION['user_id'])">
+                                        <div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in" href="{:U('Index/User/additem',array('user_id' => $_SESSION['user_id'], 'food_id' => $v['id']))}">加入购物车</a></span></div>
+                                        <else /><span class="item_price"><a class="morebtn hvr-rectangle-in" href="#" onclick="alert('请先登录！');">加入购物车</a></span>
+                                    </if> -->
+                                    <div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in addtocard" onclick="alert('加入购物车成功');">加入购物车</a></span></div>
+                                    <else /><span class="item_price"><a class="morebtn">已卖完</a></span>
+                                </if>
+                            </div>
+                            <div class="cur-right">
+                                <div><span class="item_price"><h6>仅需 &yen;{$v.price}</h6></span></div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </foreach>
+        </div>
+    </div>
+    <!-- latis -->
+    <!-- feature -->
+    <div class="feature">
+        <div class="container">
+            <div class="fle-xsel">
+                <ul id="flexiselDemo3">
+                    <li>
+                        <img src="__PUBLIC__/images/1p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/2p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/3p.png" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/4p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/5p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/6p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/7p.jpg" class="img-responsive" alt="">
+                    </li>
+                    <li>
+                        <img src="__PUBLIC__/images/8p.jpg" class="img-responsive" alt="">
+                    </li>
+                </ul>
+                <script type="text/javascript">
+                $(window).load(function() {
+
+                    $("#flexiselDemo3").flexisel({
+                        visibleItems: 8,
+                        animationSpeed: 1000,
+                        autoPlay: true,
+                        autoPlaySpeed: 3000,
+                        pauseOnHover: true,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 2
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 3
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
+                        }
+                    });
+
+                });
+                </script>
+                <script type="text/javascript" src="__PUBLIC__/js/jquery.flexisel.js"></script>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- feature -->
+    <!-- magnust -->
+    <div class="magnust">
+        <div class="container">
+            <h3>展览区域</h3>
+            <div class="col-md-4 magnust-top">
+                <div class="magnust-left">
+                    <img src="__PUBLIC__/images/9b.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="magnust-right">
+                    <h4><a href="#">点心</a></h4>
+                    <p> 美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口</p>
+                    <a class="see" href="#">更多</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-4 magnust-top">
+                <div class="magnust-left">
+                    <img src="__PUBLIC__/images/8b.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="magnust-right">
+                    <h4><a href="#">饮料</a></h4>
+                    <p> 美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口</p>
+                    <a class="see" href="#">更多</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-4 magnust-top">
+                <div class="magnust-left">
+                    <img src="__PUBLIC__/images/10b.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="magnust-right">
+                    <h4><a href="#">小炒</a></h4>
+                    <p> 美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口美味可口</p>
+                    <a class="see" href="#">更多</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- magnust -->
+    <!-- header begin -->
+    <include file="Common/footer" />
+    <!-- header end -->

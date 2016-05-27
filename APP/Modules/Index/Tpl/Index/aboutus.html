@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>宏玄餐饮B2C店</title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Spicemystery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css" type="text/css" media="screen" />
+    <script src="__PUBLIC__/js/simpleCart.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="head-top">
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="__PUBLIC__/images/logo.png" class="img-responsive" alt="" width="236px;" /></a>
+            </div>
+            <div class="header-left">
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li><a href="{:U('Index/Index/index')}">主页</a></li>
+                        <li><a href="{:U('Index/Menu/index')}">所有菜品</a></li>
+                        <li><a href="{:U('Index/Menu/category')}">分类菜品</a></li>
+                        <li class="active"><a href="{:U('Index/Index/aboutus')}">关于我们</a></li>
+                        <if condition="isset($_SESSION['user_id'])">
+                            <li><a href="{:U('Index/User/index')}">欢迎 {$_SESSION['user_name']}</a></li>
+                            <li><a href="{:U('Index/Index/logout')}">退出</a></li>
+                            <else />
+                            <li><a href="{:U('Index/Login/index')}">登录/注册</a></li>
+                        </if>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- script-for-nav -->
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".head-nav ul").slideToggle(300, function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                    <!-- script-for-nav -->
+                </div>
+                <div class="header-right1">
+                    <div class="cart box_1">
+                        <a href="{:U('Index/User/myshoppingcar')}">
+                            <h3> <span class="simpleCart_total"> &yen;0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 项)<img src="__PUBLIC__/images/bag.png" alt=""></h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- header -->
+
+    <!-- contact -->
+    <div class="contact">
+        <div class="container">
+            <div class="contact-head">
+                <h3>关于我们</h3>
+            </div>
+            <div class="contact-grid">
+                <p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+                <p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+            </div>
+            <div class="contact-details">
+                <div class="col-md-12 company_address">
+                    <address>
+                        <strong>地址</strong><br>
+                        广东省佛山市江湾一路18号<br>
+                        佛山科学技术学院本部校区西区三座105<br>
+                        <abbr title="Phone">电话：</abbr><a href="tel:(+86) 18316960780">(+86) 18316960780</a><br>
+                        Email: <a href="mailto:1203673288@qq.com">1203673288@qq.com</a>
+                    </address>
+                    <address>
+                        <strong>Follow on: </strong><br>
+                        <a href="https://github.com/CaiHongxuan">Github</a>, <a href="http://blog.csdn.net/u013049553">CSDN博客</a></p>
+                    </address>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- contact -->
+
+<!-- header begin -->
+<include file="Common/footer" />
+<!-- header end -->
